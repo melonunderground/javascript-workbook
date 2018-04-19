@@ -1,3 +1,5 @@
+'use strict'
+
 // Write a JavaScript function to display the current day and time.
   // researched the methods below for displaying date information. Created displayDateTime function. created const variable for date. created array of days to link to indexed result of getDay() method. created const variable for day to display day of week. created const variables for hours and minutes. return interpolated string displaying the current day and time
 
