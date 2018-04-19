@@ -10,17 +10,17 @@
 // toLocaleString()-// The values you can get from toLocaleString are locale-specific, and implementation dependent. In many cases, they are determined via ICU, which in-turn, uses values from CLDR. The time zone itself is always pulled from an OS setting, which may be a TZDB identifier, or a Microsoft Windows time zone setting that goes through CLDR mappings. - https://stackoverflow.com/questions/41232181/how-does-tolocalestring-get-timezone-in-javascript?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa- this method works on new Date().toLocaleString() but doesn't display current day(of week)-'4/19/2018, 2:50:11 AM'
 
 
-// function displayDateTime() {
+function displayDateTime() {
 
-// const date = new Date();
-// const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-// const day = days[date.getDay()];
-// const hours = date.getHours();
-// const minutes = date.getMinutes();
-// return `the current day is ${day}, the time is now ${hours}:${minutes}`;
-// }
+const date = new Date();
+const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const day = days[date.getDay()];
+const hours = date.getHours();
+const minutes = date.getMinutes();
+return `the current day is ${day}, the time is now ${hours}:${minutes}`;
+}
 
-// displayDateTime();
+displayDateTime();
 
 
 // Write a JavaScript program to convert a number to a string.
@@ -36,11 +36,11 @@
 // 16 - The number will show as an hexadecimal value-----w3schools.com
 
 
-// function numberToString(num) {
-//   return num.toString()
-// }
+function numberToString(num) {
+  return num.toString()
+}
 
-// numberToString(56);
+numberToString(56);
 
 // Write a JavaScript program to convert a string to the number.
 // researched gomakethings.com
@@ -51,11 +51,11 @@
 // As a result of this inconsistency, it’s a less safe choice than parseInt() and parseFloat(). If you know the format of the number you’d like, use those instead. If you want the string to fail with NaN if it has other characters in it, Number() may actually be a better choice.
 // created stringToNumber function that takes a string as parameter. the Number() method takes the same string parameter and returns as a number
 
-// function stringToNumber(string) {
-//   return Number(string)
-// }
+function stringToNumber(string) {
+  return Number(string)
+}
 
-// stringToNumber("3247")
+stringToNumber("3247")
 
 // Write a JavaScript program that takes in different datatypes and prints out whether they are a:
 // Boolean
@@ -76,27 +76,27 @@
 // In the first implementation of JavaScript, values were represented in two parts - a type tag and the actual value. There were 5 type tags that could be used, and the tag for referencing an object was 0. The null value, however, was represented as the NULL pointer, which was 0x00 for most platforms. As a result of this similarity, null has the 0 type tag, which corresponds to an object.
 // NaN The type of NaN, which stands for Not a Number is, surprisingly, a number. The reason for this is, in computing, NaN is actually technically a numeric data type. However, it is a numeric data type whose value cannot be represented using actual numbers. So, the name "Not a Number", doesn't mean that the value is not numeric. It instead means that the value cannot be expressed with numbers.---bitsofco.de
 
-// function dataTypePrinter(datatype) {
-//   return typeof datatype
-// }
+function dataTypePrinter(datatype) {
+  return typeof datatype
+}
 
-// dataTypePrinter(Number("hello"));
-// dataTypePrinter(document.all);
-// dataTypePrinter(null);
+dataTypePrinter(Number("hello"));
+dataTypePrinter(document.all);
+dataTypePrinter(null);
 
 
 // Write a JavaScript program that adds 2 numbers together.
 // + means add. created addTwoNumbers function that takes two parameters that need to be numbers and adds them together. checked typeof by nesting dataTypePrinter function. strings and booleans can be concatenated together but are not numbers.
 
-// function addTwoNumbers(num1,num2) {
-//   if (dataTypePrinter(num1) === 'number' && dataTypePrinter(num2) === 'number') {
-//   return num1 + num2
-// } else { return "please enter numbers"
-// }
-// }
+function addTwoNumbers(num1,num2) {
+  if (dataTypePrinter(num1) === 'number' && dataTypePrinter(num2) === 'number') {
+  return num1 + num2
+} else { return "please enter numbers"
+}
+}
 
-// addTwoNumbers(3,);
-// addTwoNumbers(543, 3);
+addTwoNumbers(3,);
+addTwoNumbers(543, 3);
 
 
 // Write a JavaScript program that runs only when 2 things are true.
@@ -106,44 +106,44 @@
 // -logical operators- &&=and ||=or
 
 
-// function twoTrue() {
-// let thing1 = true;
-// let thing2 = "";
-//   if (thing1 && thing2) {
-//     return "run"
-//   }
-// }
+function twoTrue() {
+let thing1 = true;
+let thing2 = "";
+  if (thing1 && thing2) {
+    return "run"
+  }
+}
 
-// twoTrue();
+twoTrue();
 
 // Write a JavaScript program that runs when 1 of 2 things are true.
 // research from conditional statements and logical operators using || to run if thing1 or thing2 is true. if both are true don't run
 
-// function oneOfTwoTrue() {
-// let thing1 = true;
-// let thing2 = '';
-// if (thing1 && thing2) {
-//   return "dont run"
-// }
-//   else if (thing1 || thing2) {
-//     return "run"
-// }
-// }
+function oneOfTwoTrue() {
+let thing1 = true;
+let thing2 = '';
+if (thing1 && thing2) {
+  return "dont run"
+}
+  else if (thing1 || thing2) {
+    return "run"
+}
+}
 
-// oneOfTwoTrue();
+oneOfTwoTrue();
 
 
 // Write a JavaScript program that runs when both things are not true.
 // research from conditional statements logical operators using ! to change from true to false
 
-// function twoFalse() {
-//   let thing1 = false;
-//   let thing2 = false;
-//   if (!thing1 && !thing2) {
-//     return "run"
-//   } else {
-//     return "don't run"
-//   }
-// }
+function twoFalse() {
+  let thing1 = false;
+  let thing2 = false;
+  if (!thing1 && !thing2) {
+    return "run"
+  } else {
+    return "don't run"
+  }
+}
 
-// twoFalse();
+twoFalse();
