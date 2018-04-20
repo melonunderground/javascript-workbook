@@ -36,10 +36,16 @@ const rl = readline.createInterface({
 
 function rockPaperScissors(hand1, hand2) {
 
-if (hand1 === 'rock' && hand2 === 'paper') || (hand1 === 'paper' && hand2 === 'scissors') || (hand1 === 'scissors' && hand2 === 'rock') {return "Hand two wins!"} else if (hand1 === 'rock' && hand2 === 'scissors') || (hand1 === 'paper' && hand2 === 'rock') || (hand1 === 'scissors' && hand2 === 'paper') {return "Hand one wins!"} else if (hand1 === hand2) {return "It's a tie!" }
+if (hand1 === 'rock' && hand2 === 'paper'|| hand1 === 'paper' && hand2 === 'scissors' ||
+hand1 === 'scissors' && hand2 === 'rock')
+{return "Hand two wins!"}
+else if (hand1 === 'rock' && hand2 === 'scissors' ||
+hand1 === 'paper' && hand2 === 'rock' || hand1 === 'scissors' && hand2 === 'paper')
+{return "Hand one wins!"} 
+else if (hand1 === hand2) {return "It's a tie!" }
 }
 
-}
+
 
 function getPrompt() {
   rl.question('hand1: ', (answer1) => {
