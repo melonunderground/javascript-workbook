@@ -35,7 +35,8 @@ const rl = readline.createInterface({
 
 
 function rockPaperScissors(hand1, hand2) {
-
+hand1 = hand1.toLowerCase().trim()
+hand2 = hand2.toLowerCase().trim()
 if (hand1 === 'rock' && hand2 === 'paper'|| hand1 === 'paper' && hand2 === 'scissors' ||
 hand1 === 'scissors' && hand2 === 'rock')
 {return "Hand two wins!"}
