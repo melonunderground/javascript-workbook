@@ -1,4 +1,30 @@
 'use strict';
+/*
+
+rockPaperScissors--
+start the game by taking a parameter for hand1 and hand2. both hands have 3 options so there is a total of 9 possible combinations.
+
+if both hands are the same > it's a tie
+h1 Rock h2 Rock
+h1 Paper h2 Paper
+h1 Scissors h2 Scissors
+
+if h1 Rock h2 Paper > h2 Wins
+if h1 Rock h2 Scissors > h1 Wins
+
+if h1 Paper h2 Scissors > h2 Wins
+if h1 Paper h2 Rock > h1 Wins
+
+if h1 Scissors h2 Rock > h2 Wins
+if h1 Scissors h2 Paper > h1 Wins
+
+sort all of the h1 and h2 Wins together
+
+if h1 === h2 > it's a tie
+if h1 Rock && h2 Paper or h1 Paper && h2 Scissors or h1 Scissors && h2 Rock > h2 Wins
+if h1 Rock && h2 Scissors or if h1 Paper && h2 Rock or h1 Scissors && h2 Paper > h1 Wins
+
+*/
 
 const assert = require('assert');
 const readline = require('readline');
@@ -10,7 +36,8 @@ const rl = readline.createInterface({
 
 function rockPaperScissors(hand1, hand2) {
 
-  // Write code here
+if (hand1 === 'rock' && hand2 === 'paper') || (hand1 === 'paper' && hand2 === 'scissors') || (hand1 === 'scissors' && hand2 === 'rock') {return "Hand two wins!"} else if (hand1 === 'rock' && hand2 === 'scissors') || (hand1 === 'paper' && hand2 === 'rock') || (hand1 === 'scissors' && hand2 === 'paper') {return "Hand one wins!"} else if (hand1 === hand2) {return "It's a tie!" }
+}
 
 }
 
