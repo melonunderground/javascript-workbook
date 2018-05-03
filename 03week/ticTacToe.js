@@ -13,7 +13,7 @@ let board = [
 ];
 
 let playerTurn = 'X';
-let counter = 0
+let counter = 0;
 
 function printBoard() {
   console.log('   0  1  2');
@@ -68,6 +68,8 @@ function ticTacToe(row, column) {
   } else {
     playerTurn = 'O', board[row][column] = 'X'
   }
+
+  
 
 }
 
