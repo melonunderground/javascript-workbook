@@ -2,8 +2,6 @@
 
 const printListOfOlympians = (array) =>
 
-array.forEach((item))
-
 array.forEach(function(item) {
   console.log(item);
 });
