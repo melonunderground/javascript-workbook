@@ -8,4 +8,4 @@ array.forEach(function(item) {
   console.log(item);
 });
 
-printListOfOlympians(['mark','george','sarah','katie','mary'])
+printListOfOlympians(['mark','george','sarah','katie','mary','judy'])
