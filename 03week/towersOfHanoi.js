@@ -11,9 +11,12 @@ const rl = readline.createInterface({
 // push function is mutable adds an item (argument) to an array as the last item in the original array
 //movePiece function uses pop function to remove last item and takes the popped item and pushes it
 
-//isLegal function checks if the popped item is less than the current last item in the destination array. access the last item with stacks.(array)[array.length - 1]. if the array is empty the popped item can be moved to the empty array(might already pass). return true if conditions are met.
+//isLegal function checks if the popped item is less than the current last item in the destination array. access the last item with stacks.(array)[array.length - 1]. if the array is empty the popped item can be moved to the empty array(might already pass). return true if conditions are met or console.log an error message.
 
-// checkForWin function checks if stacks.b === [4, 3, 2, 1] || stacks.c === [4, 3, 2, 1],
+// checkForWin function checks if stacks.b === [4, 3, 2, 1] || stacks.c === [4, 3, 2, 1], console.log win
+
+// towersOfHanoi function takes two arguments(startStack,endStack)
+// start with movePiece or isLegal function. likely need to start with movePiece so there are items to check in isLegal. end with checkForWin function
 
 
 let stacks = {
