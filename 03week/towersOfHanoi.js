@@ -7,6 +7,9 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+// pop function is mutable changes the original array by removing last item in array and returning last item in array
+// push function adds an item (as argument) to an array as the last item in the array
+
 let stacks = {
   a: [4, 3, 2, 1],
   b: [],
