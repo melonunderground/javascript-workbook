@@ -8,7 +8,10 @@ const rl = readline.createInterface({
 });
 
 // pop function is mutable changes the original array by removing last item in array and returning last item in array
-// push function adds an item (as argument) to an array as the last item in the array
+// push function is mutable adds an item (argument) to an array as the last item in the original array
+//movePiece function uses pop function to remove last item and takes the popped item and pushes it
+
+//isLegal function checks if the popped item is less than the current last item in the destination array. access the last item with stacks.(array)[array.length - 1]. if the array is empty the popped item can be moved to the empty array. return true if conditions are met.
 
 let stacks = {
   a: [4, 3, 2, 1],
