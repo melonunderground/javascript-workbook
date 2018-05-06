@@ -32,13 +32,31 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-// .push(.pop());
+function movePiece(startStack, endStack) {
+// const pop = stacks[startStack]
+stacks[endStack].push(stacks[startStack].pop());
+
+  // if (startStack === 'a' && endStack === 'b') {
+  //   stacks.b.push(stacks.a.pop())
+  // } else if (startStack === 'b' && endStack === 'a') {
+  //   stacks.a.push(stacks.b.pop())
+  // } else if (startStack === 'a' && endStack === 'c') {
+  //   stacks.c.push(stacks.a.pop())
+  // } else if (startStack === 'b' && endStack === 'c') {
+  //   stacks.c.push(stacks.b.pop())
+  // } else if (startStack === 'a' && endStack === 'c') {
+  //   stacks.c.push(stacks.a.pop())
+  // } else if (startStack === 'c' && endStack === 'a') {
+  //   stacks.a.push(stacks.c.pop())
+  // } else if (startStack === 'c' && endStack === 'b') {
+  //   stacks.b.push(stacks.c.pop())
+  // }
+
 }
 
-function isLegal() {
-// if item < array[array.length - 1]
-// {return true}
+function isLegal(startStack, endStack) {
+// console.log(startStack);
+
 // else {console.log("error, please resubmit"), return false}
 
 }
@@ -53,10 +71,9 @@ function checkForWin() {
 }
 
 function towersOfHanoi(startStack, endStack) {
-// console.log(typeof(startStack));
-
+movePiece(startStack, endStack);
+// isLegal(startStack, endStack);
 }
-
 
 function getPrompt() {
   printStacks();
