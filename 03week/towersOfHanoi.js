@@ -11,6 +11,7 @@ const rl = readline.createInterface({
 // push function is mutable adds an item (argument) to an array as the last item in the original array returning the new array length
 
 //  movePiece function uses pop function to remove last item and takes the popped item and pushes it
+// why doesnt stacks.startStack work?
 
 //  isLegal function checks if the popped item is less than the current last item in the destination array. access the last item with stacks.(array)[array.length - 1]. if the array is empty the popped item can be moved to the empty array(might already pass). return true if conditions are met or console.log an error message.
 
@@ -33,31 +34,15 @@ function printStacks() {
 }
 
 function movePiece(startStack, endStack) {
-// const pop = stacks[startStack]
-stacks[endStack].push(stacks[startStack].pop());
 
-  // if (startStack === 'a' && endStack === 'b') {
-  //   stacks.b.push(stacks.a.pop())
-  // } else if (startStack === 'b' && endStack === 'a') {
-  //   stacks.a.push(stacks.b.pop())
-  // } else if (startStack === 'a' && endStack === 'c') {
-  //   stacks.c.push(stacks.a.pop())
-  // } else if (startStack === 'b' && endStack === 'c') {
-  //   stacks.c.push(stacks.b.pop())
-  // } else if (startStack === 'a' && endStack === 'c') {
-  //   stacks.c.push(stacks.a.pop())
-  // } else if (startStack === 'c' && endStack === 'a') {
-  //   stacks.a.push(stacks.c.pop())
-  // } else if (startStack === 'c' && endStack === 'b') {
-  //   stacks.b.push(stacks.c.pop())
-  // }
+stacks[endStack].push(stacks[startStack].pop());
 
 }
 
 function isLegal(startStack, endStack) {
-// console.log(startStack);
-
-// else {console.log("error, please resubmit"), return false}
+if (stacks[startStack][stacks[startStack].length - 1] > stacks[endStack][stacks[endStack].length - 1]) {console.log("false")}
+else if (stacks[endStack] == 0) {console.log("true")}
+else {console.log("true")}
 
 }
 
@@ -71,8 +56,9 @@ function checkForWin() {
 }
 
 function towersOfHanoi(startStack, endStack) {
-movePiece(startStack, endStack);
-// isLegal(startStack, endStack);
+if (isLegal(startStack, endStack) == true);
+{movePiece(startStack, endStack)};
+
 }
 
 function getPrompt() {
