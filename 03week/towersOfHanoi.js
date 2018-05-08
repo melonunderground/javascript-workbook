@@ -24,6 +24,10 @@ const rl = readline.createInterface({
 
 // ----console.log & return throws error, return in checkforwin function and log in towersofhanoi function------
 
+// legalMove function combine isLegal and movePiece into one function
+
+// resetGame function if checkforWin is true, stacks is reset to have all stacks in a array. entered stacks = to reset
+
 let stacks = {
   a: [4, 3, 2, 1],
   b: [],
@@ -31,19 +35,19 @@ let stacks = {
 };
 
 
-function printStacks() {
+const printStacks = () => {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
 
-function movePiece(startStack, endStack) {
+const movePiece = (startStack, endStack) => {
 
   stacks[endStack].push(stacks[startStack].pop());
 
 }
 
-function isLegal(startStack, endStack) {
+const isLegal = (startStack, endStack) => {
   if (stacks[startStack][stacks[startStack].length - 1] > stacks[endStack][stacks[endStack].length - 1]) {
     return false
   } else if (stacks[endStack] == 0) {
@@ -54,7 +58,7 @@ function isLegal(startStack, endStack) {
 
 }
 
-function checkForWin() {
+const checkForWin = () => {
   if (stacks.b[3] == 1 || stacks.c[3] == 1) {
     return true
   } else {
@@ -62,16 +66,34 @@ function checkForWin() {
   }
 };
 
-function towersOfHanoi(startStack, endStack) {
+const legalMove = (startStack, endStack) => {
   if (isLegal(startStack, endStack)) {
     movePiece(startStack, endStack);
-    if (checkForWin()) {
-      console.log('you moved a tower')
+  }
+}
+
+const resetGame = () => {
+  if (checkForWin()) {
+    stacks = {
+      a: [4, 3, 2, 1],
+      b: [],
+      c: []
     };
   }
 }
 
-function getPrompt() {
+const towersOfHanoi = (startStack, endStack) => {
+
+  legalMove(startStack, endStack);
+
+  if (checkForWin()) {
+    console.log('you win. now move the tower again')
+
+  };
+  resetGame();
+}
+
+const getPrompt = () => {
   printStacks();
   rl.question('start stack: ', (startStack) => {
     rl.question('end stack: ', (endStack) => {
@@ -95,7 +117,26 @@ if (typeof describe === 'function') {
       });
     });
   });
-
+  describe('#movePiece()', () => {
+    it('should be able to move a block', () => {
+      towersOfHanoi('a', 'c');
+      assert.deepEqual(stacks, {
+        a: [4, 3],
+        b: [1],
+        c: [2]
+      });
+    });
+  });
+  describe('#legalMove()', () => {
+    it('should be able to move a block', () => {
+      towersOfHanoi('a', 'c');
+      assert.deepEqual(stacks, {
+        a: [4, 3],
+        b: [1],
+        c: [2]
+      });
+    });
+  });
   describe('#isLegal()', () => {
     it('should not allow an illegal move', () => {
       stacks = {
@@ -120,6 +161,12 @@ if (typeof describe === 'function') {
         a: [],
         b: [4, 3, 2, 1],
         c: []
+      };
+      assert.equal(checkForWin(), true);
+      stacks = {
+        a: [],
+        b: [],
+        c: [4, 3, 2, 1]
       };
       assert.equal(checkForWin(), true);
       stacks = {
