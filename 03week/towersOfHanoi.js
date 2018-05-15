@@ -48,29 +48,18 @@ const movePiece = (startStack, endStack) => {
 }
 
 const isLegal = (startStack, endStack) => {
-  if (stacks[startStack][stacks[startStack].length - 1] > stacks[endStack][stacks[endStack].length - 1]) {
-    return false
-  } else if (stacks[endStack] == 0) {
-    return true;
-  } else {
-    return true;
-  }
-
+  return (stacks[endStack] == 0 || stacks[startStack][stacks[startStack].length - 1] < stacks[endStack][stacks[endStack].length - 1])
 }
 
 const checkForWin = () => {
-  if (stacks.b[3] == 1 || stacks.c[3] == 1) {
-    return true
-  } else {
-    return false
-  }
+  return (stacks.b[3] == 1 || stacks.c[3] == 1)
 };
 
-const legalMove = (startStack, endStack) => {
-  if (isLegal(startStack, endStack)) {
-    movePiece(startStack, endStack);
-  }
-}
+// const legalMove = (startStack, endStack) => {
+//   if (isLegal(startStack, endStack)) {
+//     movePiece(startStack, endStack);
+//   }
+//
 
 const resetGame = () => {
   if (checkForWin()) {
@@ -84,102 +73,102 @@ const resetGame = () => {
 
 const towersOfHanoi = (startStack, endStack) => {
 
-  legalMove(startStack, endStack);
-
-  if (checkForWin()) {
-    console.log('you win. now move the tower again')
-
-  };
-  resetGame();
+    if (isLegal(startStack, endStack)) {
+      movePiece(startStack, endStack);
+    }
+    if (checkForWin()) {
+      console.log('you win. now move the tower again')
+      resetGame();
+    };
 }
 
-const getPrompt = () => {
-  printStacks();
-  rl.question('start stack: ', (startStack) => {
-    rl.question('end stack: ', (endStack) => {
-      towersOfHanoi(startStack, endStack);
+    const getPrompt = () => {
+      printStacks();
+      rl.question('start stack: ', (startStack) => {
+        rl.question('end stack: ', (endStack) => {
+          towersOfHanoi(startStack, endStack);
+          getPrompt();
+        });
+      });
+    }
+
+    // Tests
+
+    if (typeof describe === 'function') {
+
+      describe('#towersOfHanoi()', () => {
+        it('should be able to move a block', () => {
+          towersOfHanoi('a', 'b');
+          assert.deepEqual(stacks, {
+            a: [4, 3, 2],
+            b: [1],
+            c: []
+          });
+        });
+      });
+      describe('#movePiece()', () => {
+        it('should be able to move a block', () => {
+          towersOfHanoi('a', 'c');
+          assert.deepEqual(stacks, {
+            a: [4, 3],
+            b: [1],
+            c: [2]
+          });
+        });
+      });
+      describe('#legalMove()', () => {
+        it('should be able to move a block', () => {
+          towersOfHanoi('a', 'c');
+          assert.deepEqual(stacks, {
+            a: [4, 3],
+            b: [1],
+            c: [2]
+          });
+        });
+      });
+      describe('#isLegal()', () => {
+        it('should not allow an illegal move', () => {
+          stacks = {
+            a: [4, 3, 2],
+            b: [1],
+            c: []
+          };
+          assert.equal(isLegal('a', 'b'), false);
+        });
+        it('should allow a legal move', () => {
+          stacks = {
+            a: [4, 3, 2, 1],
+            b: [],
+            c: []
+          };
+          assert.equal(isLegal('a', 'c'), true);
+        });
+      });
+      describe('#checkForWin()', () => {
+        it('should detect a win', () => {
+          stacks = {
+            a: [],
+            b: [4, 3, 2, 1],
+            c: []
+          };
+          assert.equal(checkForWin(), true);
+          stacks = {
+            a: [],
+            b: [],
+            c: [4, 3, 2, 1]
+          };
+          assert.equal(checkForWin(), true);
+          stacks = {
+            a: [1],
+            b: [4, 3, 2],
+            c: []
+          };
+          assert.equal(checkForWin(), false);
+        });
+      });
+
+    } else {
+
       getPrompt();
-    });
-  });
-}
 
-// Tests
-
-if (typeof describe === 'function') {
-
-  describe('#towersOfHanoi()', () => {
-    it('should be able to move a block', () => {
-      towersOfHanoi('a', 'b');
-      assert.deepEqual(stacks, {
-        a: [4, 3, 2],
-        b: [1],
-        c: []
-      });
-    });
-  });
-  describe('#movePiece()', () => {
-    it('should be able to move a block', () => {
-      towersOfHanoi('a', 'c');
-      assert.deepEqual(stacks, {
-        a: [4, 3],
-        b: [1],
-        c: [2]
-      });
-    });
-  });
-  describe('#legalMove()', () => {
-    it('should be able to move a block', () => {
-      towersOfHanoi('a', 'c');
-      assert.deepEqual(stacks, {
-        a: [4, 3],
-        b: [1],
-        c: [2]
-      });
-    });
-  });
-  describe('#isLegal()', () => {
-    it('should not allow an illegal move', () => {
-      stacks = {
-        a: [4, 3, 2],
-        b: [1],
-        c: []
-      };
-      assert.equal(isLegal('a', 'b'), false);
-    });
-    it('should allow a legal move', () => {
-      stacks = {
-        a: [4, 3, 2, 1],
-        b: [],
-        c: []
-      };
-      assert.equal(isLegal('a', 'c'), true);
-    });
-  });
-  describe('#checkForWin()', () => {
-    it('should detect a win', () => {
-      stacks = {
-        a: [],
-        b: [4, 3, 2, 1],
-        c: []
-      };
-      assert.equal(checkForWin(), true);
-      stacks = {
-        a: [],
-        b: [],
-        c: [4, 3, 2, 1]
-      };
-      assert.equal(checkForWin(), true);
-      stacks = {
-        a: [1],
-        b: [4, 3, 2],
-        c: []
-      };
-      assert.equal(checkForWin(), false);
-    });
-  });
-
-} else {
-
-  getPrompt();
-
-}
+    }
