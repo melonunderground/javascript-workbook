@@ -26,35 +26,24 @@ function printBoard() {
 
 
 // X is the first mark on the board followed by O until there is a winner or the board is filled (9 spaces on the board) for a tie game. the tictactoe function takes two arguments the first is row and second is column. board.splice[][] can change the board deleting the blank space and entering new value for the multiarray. for horizontal vertical and diagonal win functions enter the array index information for three connecting boxes with && for the boxes and || for the different winning combinations.
+function checkMark(player) {
+  return (player === 'X' || player === 'O')
+}
 
 
 function horizontalWin() {
-  if ((board[0][0] === playerTurn && board[0][1] === playerTurn && board[0][2] === playerTurn) ||
-    (board[1][0] === playerTurn && board[1][1] === playerTurn && board[1][2] === playerTurn) ||
-    (board[2][0] === playerTurn && board[2][1] === playerTurn && board[2][2] === playerTurn)) {
-    return true;
-  }
+  return ((board[0].every(checkMark)) ||
+    (board[1].every(checkMark)) ||
+    (board[2].every(checkMark)))
 }
 
 function verticalWin() {
-  if ((board[0][0] === playerTurn && board[1][0] === playerTurn && board[2][0] === PlayerTurn) ||
-    (board[0][1] === playerTurn && board[1][1] === playerTurn && board[2][1] === playerTurn) ||
-    (board[0][2] === playerTurn && board[1][2] === playerTurn && board[2][2] === playerTurn)) {
-    return true;
-  }
-}
 
-function diagonalWin() {
-  if ((board[0][0] === playerTurn && board[1][1] === playerTurn && board[2][2] === PlayerTurn) ||
-    (board[0][2] === playerTurn && board[1][1] === playerTurn && board[2][0] === playerTurn)) {
-    return true;
-  }
 }
-
 
 function checkForWin() {
-  if (horizontalWin() || verticalWin() || diagonalWin()) {
-    return true;
+  if (horizontalWin() ) {
+
     console.log(playerTurn + " Wins");
   }
 }
@@ -69,7 +58,7 @@ function ticTacToe(row, column) {
     playerTurn = 'O', board[row][column] = 'X'
   }
 
-  
+
 
 }
 
@@ -79,6 +68,7 @@ function getPrompt() {
   rl.question('row: ', (row) => {
     rl.question('column: ', (column) => {
       ticTacToe(row, column);
+      checkForWin();
       getPrompt();
     });
   });
