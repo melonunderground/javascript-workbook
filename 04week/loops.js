@@ -5,7 +5,7 @@
 // Use a for loop to console.log each item in the array carsInReverse.
 
 
-const carsInReverse = ['lebaron', 'concorde', 'wrangler'];
+// const carsInReverse = ['lebaron', 'concorde', 'wrangler'];
 
 
 // for (let i = 0; carsInReverse.length > i; i++) {
@@ -21,12 +21,12 @@ const carsInReverse = ['lebaron', 'concorde', 'wrangler'];
 // gender: "female"
 
 
-const persons = {
-  firstName: "Jane",
-  lastName: "Doe",
-  birthDate: "Jan 5, 1925",
-  gender: "female"
-};
+// const persons = {
+//   firstName: "Jane",
+//   lastName: "Doe",
+//   birthDate: "Jan 5, 1925",
+//   gender: "female"
+// };
 
 
 // Use a for...in loop to console.log each key.
@@ -47,6 +47,12 @@ const persons = {
 
 
 // while loop
+let x = 0;
+while (x < 1000) {
+  x++;
+  console.log(x)
+}
+
 // Use a for loop to console.log the numbers 1 to 1000.
 
 
