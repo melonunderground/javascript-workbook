@@ -16,27 +16,31 @@ class CrewMember {
     this.specialSkill = specialSkill;
     this.ship = null;
   }
-  printOutName () {
+
+  printOutName() {
     console.log(this.name)
   }
 
-  enterShip  (ship) {
+  // assignShip() {
+  //   if (this.job == 'pilot') {
+  //     this.ship = 'MAV'
+  //   }
+  //   if (this.job == 'mechanic') {
+  //     this.ship = 'Repair Ship'
+  //   }
+  //   if (this.job == 'commander') {
+  //     this.ship = 'Main Ship'
+  //   }
+  //   if (this.job == 'programmer') {
+  //     this.ship = 'Any Ship!'
+  //   }
+  // }
+
+  enterShip(ship) {
     this.ship = ship
     ship.crew.push(this)
-// console.log(this)
-
-// ship.crew.push(this)
-// console.log(ship)
-// ship.crew.push(this.name)
-// console.log(ship)
-// this.ship = ship;
-// ship.crew.push(this)
-// console.log(ship)
-// console.log(ship.crew.push())
-// ship.crew.push(this)
-// console.log(this)
   }
- }
+}
 
 class Ship {
   constructor(name, type, ability) {
@@ -45,38 +49,30 @@ class Ship {
     this.ability = ability;
     this.crew = []
   }
+  missionStatement() {
+    if (this.crew.length < 1) {
+      return ("Can't perform a mission yet.")
+    } else {
+      return (this.ability)
+    }
+
+  }
 }
 
 const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
 const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
 const mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-console.log(crewMember1.ship)
-console.log(mav.crew.length)
- console.log(mav.crew[0])
-crewMember1.enterShip(mav)
-console.log(crewMember1.ship)
-console.log(mav.crew.length)
- console.log(mav.crew[0])
+const hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
+// crewMember1.assignShip()
 // console.log(crewMember1.ship)
-// console.log(crewMember1)
-// console.log(crewMember2.printOutName(),crewMember1.name)
-// console.log(mav.type)
-// console.log(mav.ability)
-// console.log(mav.crew.length)
-
-
-// Your code here
-// console.log(crewMember1)
-// console.log(crewMember1.name);
-// console.log(crewMember1.job);
-// console.log(crewMember1.specialSkill);
-// console.log(crewMember1.ship);
-// crewMember1.enterShip('mav');
-// console.log(ship.crew)
-// console.log(crewMember1.ship)
-
-
-  // console.log(mav);
+// crewMember2.assignShip()
+// console.log(crewMember2.ship)
+// mav.missionStatement();
+// hermes.missionStatement();
+// crewMember1.enterShip()
+// crewMember2.enterShip(hermes)
+// mav.missionStatement();
+// hermes.missionStatement();
 //tests
 if (typeof describe === 'function') {
   describe('CrewMember', function() {
