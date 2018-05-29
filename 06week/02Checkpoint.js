@@ -63,4 +63,5 @@ console.log(nums[505])
 
 
 
+
 // console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
