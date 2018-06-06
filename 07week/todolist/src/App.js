@@ -31,9 +31,7 @@ renderList() {
     return <p>{item}</p>
   })
 }
-
-
-
+ 
 //user has to add items to list using input text field
 //show user updated list
 
