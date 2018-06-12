@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+//initial state is playerTurn X
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -10,42 +12,49 @@ class App extends Component {
     }
   }
 
-checkForWin = (newState) => {
-  const wins = [ [0,1,2],[3,4,5],[6,7,8],
-                [0,3,6], [1,4,7],[2,5,8],
-                [0,4,8],[2,4,6] ]
-    // return wins.some((winCombo) => winCombo.every((index)=> newState[`cell${index}`] === newState.playerTurn ) )
+// handleClick method takes cell as argument. if cell does not have state create a newState object copy of this.state and enter the playerTurn in the cell. if newState creates a win alert that the playerTurn wins. if newState does not create a win rotate playerTurn and setState to newState.
 
-    return wins.some((winCombo) => {
-      return winCombo.every((index)=> {
-        return newState[`cell${index}`] === newState.playerTurn
+handleClick = (cell)=>{
+    if (!this.state[cell]) {
+      const newState = {...this.state}
+          newState[cell] = this.state.playerTurn
+
+    if(this.checkForWin(newState)){
+      alert(`${this.state.playerTurn} Wins!`)
+    } else {
+
+// newState['playerTurn'] = newState['playerTurn'] === 'X' ? 'O' : 'X'
+
+      if (newState['playerTurn'] === 'X') {
+        newState['playerTurn'] = 'O'
+      } else { newState['playerTurn'] = 'X'
+
+    }
+    this.setState(newState)
+  }
+
+  }
+
+
+// checkForWin method
+// wins array of all array winning indexed combinations
+// the some function takes in each win(one array in the wins array) and checks if the value of every item in that win array is equal to the current playerTurn by checking the newState objects cell key values
+
+checkForWin = (newState) => {
+  const wins = [
+                 [0,1,2],[3,4,5],[6,7,8],
+                 [0,3,6],[1,4,7],[2,5,8],
+                 [0,4,8],[2,4,6]
+               ]
+
+// return wins.some((win) => win.every((index)=> newState[`cell${index}`] === newState.playerTurn ) )
+
+    return wins.some((win) => {
+      return win.every((i)=> {
+        return newState[`cell${i}`] === newState.playerTurn
       })
     })
   }
-
-
-handleClick = (cell)=>{
-  if (!this.state[cell]) {
-  const newState = {...this.state}
-  newState[cell] = this.state.playerTurn
-  // newState['playerTurn'] = newState['playerTurn'] === 'X' ? 'O' : 'X'
-  // if (newState['playerTurn'] === 'X') {
-  //   newState['playerTurn'] = 'O'
-  // } else { newState['playerTurn'] = 'X'
-  if(this.checkForWin(newState)){
-    alert(`${this.state.playerTurn} Wins!`)
-  } else {
-    newState['playerTurn'] = newState['playerTurn'] === 'X' ? 'O' : 'X'
-  }
-  this.setState(newState)
-
-
-
-}
-
-}
-
-
 
 
   render() {
